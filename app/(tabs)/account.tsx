@@ -7,7 +7,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useSession } from '@/components/ctx';
-import { Avatar, Card, IconButton, TouchableRipple, Divider,Portal,Dialog,Button ,Text} from 'react-native-paper';
+import { Avatar, Card, IconButton, TouchableRipple, Divider,Portal,Dialog,Button ,Text,MD2Colors} from 'react-native-paper';
 export default function TabTwoScreen() {
   const { signOut } = useSession();
   const [visible, setVisible] = React.useState(false);
@@ -28,14 +28,14 @@ export default function TabTwoScreen() {
 
 
 <Portal>
-      <Dialog visible={visible} onDismiss={hideDialog}>
+      <Dialog dismissable={false} visible={visible} onDismiss={hideDialog}>
         <Dialog.Icon icon="alert" />
         <Dialog.Title style={styles.title}>Confirm SignOut</Dialog.Title>
         <Dialog.Content>
           <Text variant="bodyMedium">Do you really want to signout?</Text>
         </Dialog.Content>
         <Dialog.Actions>
-          <Button onPress={() => {signOut(); }}>Ok</Button>
+          <Button textColor={MD2Colors.red500} onPress={() => {signOut(); }}>Ok</Button>
           <Button onPress={() => {hideDialog();}}>Cancel</Button>
         </Dialog.Actions>
       </Dialog>
