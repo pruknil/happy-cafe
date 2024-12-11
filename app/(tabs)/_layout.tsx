@@ -9,7 +9,7 @@ import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Text } from 'react-native';
 import { Redirect} from 'expo-router';
-import { useSession } from '../../components/ctx';
+import { useSession } from '@/components/ctx';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { session, isLoading } = useSession();
@@ -54,6 +54,13 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="index.account" color={color} />,
         }}
       />
     </Tabs>

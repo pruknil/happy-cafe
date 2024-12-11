@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
-import {StyleSheet, Button, View, TextInput, Alert} from 'react-native';
-import { useSession } from '../components/ctx';
+import {Button, View, TextInput} from 'react-native';
+import { useSession } from '@/components/ctx';
 export default function SignIn() {
   const { signIn } = useSession();
   return (
