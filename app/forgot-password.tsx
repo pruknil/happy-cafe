@@ -1,8 +1,9 @@
-import { Link, Stack } from 'expo-router';
+import { Link, Stack, router } from 'expo-router';
 import { StyleSheet } from 'react-native';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { TouchableRipple } from 'react-native-paper';
 
 export default function ForgotPasswordScreen() {
   return (
@@ -10,9 +11,9 @@ export default function ForgotPasswordScreen() {
       <Stack.Screen options={{ title: 'ForgotPasswordScreen' }} />
       <ThemedView style={styles.container}>
         <ThemedText type="title">ForgotPasswordScreen</ThemedText>
-        <Link href="/" style={styles.link}>
+        <TouchableRipple onPress={() => { router.replace('/'); }}  >
           <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
+        </TouchableRipple>
       </ThemedView>
     </>
   );

@@ -54,17 +54,15 @@ export default function SignIn() {
       />
 
       <View style={styles.forgotPassword}>
-      <Link href="/forgot-password" style={styles.link}>
-      <Text style={styles.label}>Forgot your password?</Text>
-        </Link>
-         
+
+        <TouchableRipple onPress={() => { router.replace('/forgot-password'); }}  >
+          <Text style={styles.label}>Forgot your password?</Text>
+        </TouchableRipple>
 
       </View>
 
       <Button mode="contained" onPress={() => {
         signIn();
-        // Navigate after signing in. You may want to tweak this to ensure sign-in is
-        // successful before navigating.
         router.replace('/');
       }}>
         Login
@@ -72,9 +70,9 @@ export default function SignIn() {
 
       <View style={styles.row}>
         <Text style={styles.label}>Don’t have an account? </Text>
-        <Link href="/signup" style={styles.link}>
+        <TouchableRipple onPress={() => { router.replace('/signup'); }}  >
           <Text style={styles.link}>Sign up</Text>
-        </Link>
+        </TouchableRipple>
       </View>
       {/* <Portal>
 

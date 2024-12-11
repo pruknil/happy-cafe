@@ -1,8 +1,8 @@
-import { Link, Stack } from 'expo-router';
+import { Link, Stack, router } from 'expo-router';
 import { StyleSheet } from 'react-native';
-
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { TouchableRipple } from 'react-native-paper';
 
 export default function SignUpScreen() {
   return (
@@ -10,9 +10,9 @@ export default function SignUpScreen() {
       <Stack.Screen options={{ title: 'SignUpScreen' }} />
       <ThemedView style={styles.container}>
         <ThemedText type="title">SignUpScreen</ThemedText>
-        <Link href="/" style={styles.link}>
+        <TouchableRipple onPress={() => { router.replace('/'); }}  >
           <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
+        </TouchableRipple>
       </ThemedView>
     </>
   );
