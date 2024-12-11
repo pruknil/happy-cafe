@@ -1,6 +1,6 @@
 REACT_NATIVE_PACKAGER_HOSTNAME=192.168.2.42
 npx expo prebuild
-eas build -p android --profile preview --local
+eas build -p android --profile build-local-apk --local
 
 bundletool build-apks --bundle=my_app.aab --output=my_app.apks
 

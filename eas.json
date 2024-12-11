@@ -7,14 +7,14 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "preview": {
+    "build-local-apk": {
       "android": {
         "buildType": "apk"
       },
       "env": {
-        "ANDROID_HOME": "/Users/kbtgmacbook/Library/Android/sdk",
-        "ANDROID_SDK_ROOT": "/Users/kbtgmacbook/Library/Android/sdk",
-        "ANDROID_NDK_HOME": "/Users/kbtgmacbook/Library/Android/sdk/ndk"
+        "ANDROID_HOME": "/Users/pruknil/Library/Android/sdk",
+        "ANDROID_SDK_ROOT": "/Users/pruknil/Library/Android/sdk",
+        "ANDROID_NDK_HOME": "/Users/pruknil/Library/Android/sdk/ndk"
       }
     },
     "build-remote-apk": {
