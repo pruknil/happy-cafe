@@ -1,8 +1,16 @@
 import { useSession } from '@/components/ctx';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Button, MD3LightTheme as DefaultTheme, PaperProvider, Text, TextInput, TouchableRipple, } from 'react-native-paper';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {
+    Button,
+    Card,
+    MD3LightTheme as DefaultTheme,
+    PaperProvider,
+    Text,
+    TextInput,
+    TouchableRipple,
+} from 'react-native-paper';
 export default function SignIn() {
   const { signIn } = useSession();
   const theme = {
@@ -20,70 +28,60 @@ export default function SignIn() {
 
 
   return (
-    <PaperProvider theme={theme}>
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        autoCapitalize="none"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
 
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: '' })}
-        error={!!password.error}
-        secureTextEntry
-      />
+    <PaperProvider  theme={theme}>
+        <SafeAreaView>
+        <Card>
+            <Card.Content>
+                <Text variant="titleLarge">Sign In</Text>
+                <TextInput
+                    label="Email"
+                    returnKeyType="next"
+                    value={email.value}
+                    onChangeText={(text) => setEmail({ value: text, error: '' })}
+                    error={!!email.error}
+                    autoCapitalize="none"
+                    textContentType="emailAddress"
+                    keyboardType="email-address"
+                />
 
-      <View style={styles.forgotPassword}>
+                <TextInput
+                    label="Password"
+                    returnKeyType="done"
+                    value={password.value}
+                    onChangeText={(text) => setPassword({ value: text, error: '' })}
+                    error={!!password.error}
+                    secureTextEntry
+                />
 
-        <TouchableRipple onPress={() => { router.replace('/forgot-password'); }}  >
-          <Text style={styles.label}>Forgot your password?</Text>
-        </TouchableRipple>
+                <View style={styles.forgotPassword}>
 
-      </View>
+                    <TouchableRipple onPress={() => { router.replace('/forgot-password'); }}  >
+                        <Text style={styles.label}>Forgot your password?</Text>
+                    </TouchableRipple>
 
-      <Button mode="contained" onPress={() => {
-        signIn(email.value, password.value);
-        router.replace('/');
-      }}>
-        Login
-      </Button>
+                </View>
 
-      <View style={styles.row}>
-        <Text style={styles.label}>Don’t have an account? </Text>
-        <TouchableRipple onPress={() => { router.replace('/signup'); }}  >
-          <Text style={styles.link}>Sign up</Text>
-        </TouchableRipple>
-      </View>
-      {/* <Portal>
+                <Button mode="contained" onPress={() => {
+                    signIn(email.value, password.value);
+                    router.replace('/');
+                }}>
+                    Login
+                </Button>
 
-      <TextInput
-        placeholder='Username'
-        
-      />
+                <View style={styles.row}>
+                    <Text style={styles.label}>Don’t have an account? </Text>
+                    <TouchableRipple onPress={() => { router.replace('/signup'); }}  >
+                        <Text style={styles.link}>Sign up</Text>
+                    </TouchableRipple>
+                </View>
 
-    <TextInput
-      label="Password"
-      secureTextEntry
-      right={<TextInput.Icon icon="eye" />}
-    />
 
-      <Button mode="contained-tonal"  onPress={() => {
-        signIn();
-        // Navigate after signing in. You may want to tweak this to ensure sign-in is
-        // successful before navigating.
-        router.replace('/');
-      }}>Sign In</Button>
-
-    </Portal> */}
+            </Card.Content>
+        </Card>
+        </SafeAreaView>
     </PaperProvider>
+
   );
 }
 
