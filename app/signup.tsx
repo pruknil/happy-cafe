@@ -1,7 +1,7 @@
-import { Link, Stack, router } from 'expo-router';
-import { StyleSheet } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Stack, router } from 'expo-router';
+import { StyleSheet } from 'react-native';
 import { TouchableRipple } from 'react-native-paper';
 
 export default function SignUpScreen() {

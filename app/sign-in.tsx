@@ -1,17 +1,8 @@
-import { router } from 'expo-router';
-import { View } from 'react-native';
-import { TextInput, PaperProvider, MD3LightTheme as DefaultTheme, } from 'react-native-paper';
 import { useSession } from '@/components/ctx';
-import { Link, Stack } from 'expo-router';
-import { StyleSheet, Image, TouchableOpacity } from 'react-native';
-import React, { memo, useState } from 'react';
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Avatar, Card, IconButton, TouchableRipple, Divider, Portal, Dialog, Button, Text, MD2Colors } from 'react-native-paper';
+import { router } from 'expo-router';
+import React, { useState } from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Button, MD3LightTheme as DefaultTheme, PaperProvider, Text, TextInput, TouchableRipple, } from 'react-native-paper';
 export default function SignIn() {
   const { signIn } = useSession();
   const theme = {
@@ -34,11 +25,9 @@ export default function SignIn() {
         label="Email"
         returnKeyType="next"
         value={email.value}
-        onChangeText={text => setEmail({ value: text, error: '' })}
+        onChangeText={(text) => setEmail({ value: text, error: '' })}
         error={!!email.error}
-        errorText={email.error}
         autoCapitalize="none"
-        autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
       />
@@ -47,9 +36,8 @@ export default function SignIn() {
         label="Password"
         returnKeyType="done"
         value={password.value}
-        onChangeText={text => setPassword({ value: text, error: '' })}
+        onChangeText={(text) => setPassword({ value: text, error: '' })}
         error={!!password.error}
-        errorText={password.error}
         secureTextEntry
       />
 
@@ -62,7 +50,7 @@ export default function SignIn() {
       </View>
 
       <Button mode="contained" onPress={() => {
-        signIn();
+        signIn(email.value, password.value);
         router.replace('/');
       }}>
         Login

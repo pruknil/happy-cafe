@@ -1,13 +1,9 @@
-import { StyleSheet, Image, Platform } from 'react-native';
-import * as React from 'react';
-import { Collapsible } from '@/components/Collapsible';
-import { ExternalLink } from '@/components/ExternalLink';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 import { useSession } from '@/components/ctx';
-import { Avatar, Card, IconButton, TouchableRipple, Divider,Portal,Dialog,Button ,Text,MD2Colors} from 'react-native-paper';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import * as React from 'react';
+import { StyleSheet } from 'react-native';
+import { Avatar, Button, Card, Dialog, Divider, IconButton, MD2Colors, Portal, Text, TouchableRipple } from 'react-native-paper';
 export default function TabTwoScreen() {
   const { signOut } = useSession();
   const [visible, setVisible] = React.useState(false);
