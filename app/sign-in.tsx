@@ -5,12 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet, View } from 'react-native';
 import {
   Button,
-  Card,
-  MD3LightTheme as DefaultTheme,
-  PaperProvider,
-  Text,
+  Card, Text,
   TextInput,
-  TouchableRipple,
+  TouchableRipple
 } from 'react-native-paper';
 export default function SignIn() {
   const { signIn } = useSession();
@@ -22,11 +19,13 @@ export default function SignIn() {
 
 
   return (
-      <SafeAreaView>
-        <Card>
-          <Card.Content>
-            <Text variant="titleLarge">Sign In</Text>
+    <SafeAreaView style={styles.container}>
+      <Card>
+        <Card.Content>
+          <Text style={styles.title}>Login</Text>
+          <View style={styles.inputContainer}>
             <TextInput
+              style={styles.input}
               label="Email"
               returnKeyType="next"
               value={email.value}
@@ -36,60 +35,117 @@ export default function SignIn() {
               textContentType="emailAddress"
               keyboardType="email-address"
             />
-
+          </View>
+          <View style={styles.inputContainer}>
             <TextInput
+              style={styles.input}
               label="Password"
               returnKeyType="done"
               value={password.value}
               onChangeText={(text) => setPassword({ value: text, error: '' })}
               error={!!password.error}
               secureTextEntry
-            />
-
-            <View style={styles.forgotPassword}>
-
-              <TouchableRipple onPress={() => { router.replace('/forgot-password'); }}  >
-                <Text style={styles.label}>Forgot your password?</Text>
-              </TouchableRipple>
-
-            </View>
-
-            <Button mode="contained" onPress={() => {
-              signIn(email.value, password.value);
-              router.replace('/');
-            }}>
-              Login
-            </Button>
-
-            <View style={styles.row}>
-              <Text style={styles.label}>Don’t have an account? </Text>
-              <TouchableRipple onPress={() => { router.replace('/signup'); }}  >
-                <Text style={styles.link}>Sign up</Text>
-              </TouchableRipple>
-            </View>
+            /></View>
 
 
-          </Card.Content>
-        </Card>
-      </SafeAreaView>
+          <View style={styles.forgotPassword}>
+
+            <TouchableRipple onPress={() => { router.replace('/forgot-password'); }}  >
+              <Text style={styles.forgotPassword}>Forgot your password?</Text>
+            </TouchableRipple>
+
+          </View>
+
+          <Button mode="contained" onPress={() => {
+            signIn(email.value, password.value);
+            router.replace('/');
+          }}>
+            Login
+          </Button>
+
+          <View style={styles.row}>
+            <Text style={styles.signUp}>Don’t have an account? </Text>
+            <TouchableRipple onPress={() => { router.replace('/signup'); }}  >
+              <Text style={styles.signUpLink}>Sign up</Text>
+            </TouchableRipple>
+          </View>
+
+
+        </Card.Content>
+      </Card>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  forgotPassword: {
-    width: '100%',
-    alignItems: 'flex-end',
-    marginBottom: 24,
-  },
+
   row: {
     flexDirection: 'row',
-    marginTop: 4,
+    marginTop: 15,
   },
-  label: {
 
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
   },
-  link: {
+  logo: {
+    height: 200,
+    width: 200,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
+  title: {
+    fontSize: 32,
+    marginBottom: 40,
     fontWeight: 'bold',
-
+    color: 'black',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    height: 50,
+    backgroundColor: '#f1f1f1',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  icon: {
+    marginRight: 10,
+  },
+  input: {
+    flex: 1,
+    height: 30,
+  },
+  forgotPassword: {
+    alignSelf: 'flex-end',
+    marginBottom: 20,
+    color: '#000',
+  },
+  button: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#1E90FF',
+    borderRadius: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+  },
+  signUp: {
+    color: '#000',
+  },
+  signUpLink: {
+    color: '#1E90FF',
+  },
+  errorText: {
+    color: 'red',
+    alignSelf: 'flex-start',
+    marginBottom: 10,
   },
 });

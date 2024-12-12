@@ -7,7 +7,7 @@ import { Avatar, Button, Card, Dialog, Divider, IconButton, MD2Colors, Portal, T
 export default function TabTwoScreen() {
   const { signOut } = useSession();
   const [visible, setVisible] = React.useState(false);
-
+  const { session } = useSession();
   const hideDialog = () => setVisible(false);
   return (
     
@@ -38,7 +38,7 @@ export default function TabTwoScreen() {
     </Portal>
 
       <Card.Title
-        title="Account Details"
+        title={"Account : "+session}
         left={(props) => <Avatar.Icon {...props} icon="account" />}
         right={(props) => <IconButton {...props} icon="chevron-right" />}
       />
