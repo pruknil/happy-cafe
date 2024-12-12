@@ -17,7 +17,7 @@ export default function TabTwoScreen() {
         <IconSymbol
           size={310}
           color="#808080"
-          name="index.account"
+          name="person.fill"
           style={styles.headerImage}
         />
       }>
@@ -46,7 +46,6 @@ export default function TabTwoScreen() {
 
       <TouchableRipple
         onPress={() => { setVisible(true) }}
-        
       >
         <Card.Title
           title="Sign Out"

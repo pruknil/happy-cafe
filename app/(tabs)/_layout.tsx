@@ -1,18 +1,30 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { useSession } from '@/components/ctx';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { Redirect } from 'expo-router';
-import { Text } from 'react-native';
+import { Redirect, Tabs } from 'expo-router';
+import React from 'react';
+import { Platform } from 'react-native';
+// import { Text } from 'react-native';
+import {
+  MD3DarkTheme as DefaultTheme,
+  Text
+} from 'react-native-paper';
 export default function TabLayout() {
   const colorScheme = useColorScheme();
   const { session, isLoading } = useSession();
-
+  const theme = {
+    ...DefaultTheme, // or MD3DarkTheme
+    roundness: 2,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: '#3498db',
+      secondary: '#f1c40f',
+      tertiary: '#a1b2c3',
+    },
+  };
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -40,6 +52,7 @@ export default function TabLayout() {
           },
           default: {},
         }),
+        
       }}>
       <Tabs.Screen
         name="index"
@@ -59,7 +72,7 @@ export default function TabLayout() {
         name="account"
         options={{
           title: 'Account',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="index.account" color={color} />,
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="person.fill" color={color} />,
         }}
       />
     </Tabs>
