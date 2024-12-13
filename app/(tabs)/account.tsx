@@ -1,4 +1,5 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { ThemedText } from '@/components/ThemedText';
 import { useSession } from '@/components/ctx';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import * as React from 'react';
@@ -28,7 +29,7 @@ export default function TabTwoScreen() {
         <Dialog.Icon icon="alert" />
         <Dialog.Title style={styles.title}>Confirm SignOut</Dialog.Title>
         <Dialog.Content>
-          <Text variant="bodyMedium">Do you really want to signout?</Text>
+          <ThemedText type="defaultSemiBold">Do you really want to signout?</ThemedText>
         </Dialog.Content>
         <Dialog.Actions>
           <Button textColor={MD2Colors.red500} onPress={() => {signOut(); }}>Ok</Button>

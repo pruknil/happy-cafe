@@ -1,19 +1,39 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, StyleSheet, Platform, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-
+import { Avatar, Button, Card, Dialog, Divider, IconButton, MD2Colors, Portal, Searchbar, Text, TouchableRipple } from 'react-native-paper';
+import React from 'react';
 export default function HomeScreen() {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
+        <View style={{ flex: 1 }}>
+          <Image
+            source={require('@/assets/images/partial-react-logo.png')}
+            style={styles.reactLogo}
+          />
+
+
+          <View style={{ alignItems: 'center', start: 0, top: 30 ,flexDirection:'row-reverse'}} >
+
+            <Searchbar
+              style={{width:'25%',right:10}}
+              placeholder="Search"
+              onChangeText={setSearchQuery}
+              value={searchQuery}
+            />
+
+          </View>
+
+
+        </View>
+
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
