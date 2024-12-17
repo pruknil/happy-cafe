@@ -9,6 +9,7 @@ import React from 'react';
 export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
+    const w = (Platform.OS==="ios")?-10:10;
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -23,7 +24,7 @@ export default function HomeScreen() {
           <View style={{ alignItems: 'center', start: 0, top: 30 ,flexDirection:'row-reverse'}} >
 
             <Searchbar
-              style={{width:'25%',right:10}}
+              style={{width:'50%',right:w , height:50}}
               placeholder="Search"
               onChangeText={setSearchQuery}
               value={searchQuery}
