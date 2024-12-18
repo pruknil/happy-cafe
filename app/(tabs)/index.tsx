@@ -1,15 +1,14 @@
-import { Image, StyleSheet, Platform, View } from 'react-native';
+import { Image, Platform, StyleSheet, View } from 'react-native';
 
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Avatar, Button, Card, Dialog, Divider, IconButton, MD2Colors, Portal, Searchbar, Text, TouchableRipple } from 'react-native-paper';
 import React from 'react';
+import { Searchbar } from 'react-native-paper';
 export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
-    const w = (Platform.OS==="ios")?-10:10;
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -19,22 +18,15 @@ export default function HomeScreen() {
             source={require('@/assets/images/partial-react-logo.png')}
             style={styles.reactLogo}
           />
-
-
-          <View style={{ alignItems: 'center', start: 0, top: 30 ,flexDirection:'row-reverse'}} >
-
+          <View style={{ alignItems: 'center', start: 0, top: 30, flexDirection: 'row-reverse' }} >
             <Searchbar
-              style={{width:'50%',right:w , height:50}}
+              style={styles.searchbar}
               placeholder="Search"
               onChangeText={setSearchQuery}
               value={searchQuery}
             />
-
           </View>
-
-
         </View>
-
       }>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Welcome!</ThemedText>
@@ -76,6 +68,17 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  searchbar: {
+    width: Platform.select({
+      web: '25%',
+      default: '50%',
+    }),  
+    right: Platform.select({
+      ios: -10,
+      default: 10,
+    }), 
+    height: 50
+  },
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
