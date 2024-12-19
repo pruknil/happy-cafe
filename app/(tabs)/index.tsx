@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     }),  
     right: Platform.select({
       ios: -10,
+      android: -10,
       default: 10,
     }), 
     height: 50
