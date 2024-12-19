@@ -68,6 +68,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="gift.fill" color={color} />,
         }}
       />
+            <Tabs.Screen
+        name="scan"
+        options={{
+          title: 'Scan',
+          tabBarIcon: ({ color}) => <IconSymbol size={60} name="viewfinder.circle.fill" color={color} style={{top:-15}} />,
+        }}
+      />
       <Tabs.Screen
         name="explore"
         options={{
